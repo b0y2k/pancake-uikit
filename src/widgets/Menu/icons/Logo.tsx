@@ -6,6 +6,18 @@ interface LogoProps extends SvgProps {
   isDark: boolean;
 }
 
+
+const Logo: React.FC<LogoProps> = ({ isDark, ...props }) => {
+  const textColor = isDark ? "#FFFFFF" : "#000000";
+  return (
+    <Svg viewBox="0 0 205 26" {...props}>
+      <image width="205" height="26" href={isDark ? '/images/spectre/spectreDark.svg' : '/images/spectre/spectreLight.svg'}/>
+    </Svg>
+  )
+};
+
+
+/*
 const Logo: React.FC<LogoProps> = ({ isDark, ...props }) => {
   const textColor = isDark ? "#FFFFFF" : "#000000";
   return (
@@ -81,5 +93,6 @@ const Logo: React.FC<LogoProps> = ({ isDark, ...props }) => {
     </Svg>
   );
 };
+*/
 
 export default React.memo(Logo, (prev, next) => prev.isDark === next.isDark);
